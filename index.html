@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Important Server Announcement | Studio Wildcard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ark-orange: #E8760A;
+    --ark-orange-bright: #FF9B2A;
+    --ark-red: #C0392B;
+    --ark-dark: #0D0D0D;
+    --ark-surface: #141414;
+    --ark-surface2: #1C1C1C;
+    --ark-border: rgba(232, 118, 10, 0.25);
+    --ark-text: #D4CFCB;
+    --ark-muted: #7A756F;
+    --ark-white: #EDE9E4;
+  }
+
+  body {
+    background-color: var(--ark-dark);
+    color: var(--ark-text);
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* NAV */
+  .nav {
+    background: rgba(10, 10, 10, 0.97);
+    border-bottom: 1px solid var(--ark-border);
+    padding: 0 2rem;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .nav-logo {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: 0.12em;
+    color: var(--ark-white);
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .nav-logo span { color: var(--ark-orange); }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ark-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--ark-orange); }
+
+  /* HERO BANNER */
+  .hero-banner {
+    background: linear-gradient(180deg, #1A0E05 0%, #0D0D0D 100%);
+    border-bottom: 2px solid var(--ark-orange);
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(232, 118, 10, 0.015) 2px,
+      rgba(232, 118, 10, 0.015) 4px
+    );
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 3rem 2rem 2.5rem;
+  }
+
+  .badge-urgent {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--ark-red);
+    color: #fff;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    margin-bottom: 1.2rem;
+  }
+
+  .badge-urgent::before {
+    content: '!';
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+    background: rgba(255,255,255,0.25);
+    border-radius: 50%;
+    font-size: 10px;
+    font-weight: 900;
+  }
+
+  .hero-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: clamp(28px, 5vw, 44px);
+    line-height: 1.1;
+    color: var(--ark-white);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-title em {
+    font-style: normal;
+    color: var(--ark-orange);
+  }
+
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    font-size: 13px;
+    color: var(--ark-muted);
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    flex-wrap: wrap;
+  }
+
+  .hero-meta span { display: flex; align-items: center; gap: 5px; }
+  .hero-meta strong { color: var(--ark-text); font-weight: 600; }
+
+  /* CONTENT AREA */
+  .content-wrap {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 3rem 2rem 5rem;
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  @media (max-width: 720px) {
+    .content-wrap { grid-template-columns: 1fr; }
+    .sidebar { order: -1; }
+  }
+
+  .article-body h2 {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--ark-orange);
+    margin: 2.5rem 0 0.75rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--ark-border);
+  }
+
+  .article-body h2:first-child { margin-top: 0; }
+
+  .article-body p {
+    margin-bottom: 1.25rem;
+    font-size: 15.5px;
+    color: var(--ark-text);
+    font-weight: 300;
+  }
+
+  .article-body strong {
+    color: var(--ark-white);
+    font-weight: 600;
+  }
+
+  /* TIMELINE BLOCK */
+  .timeline {
+    background: var(--ark-surface2);
+    border: 1px solid var(--ark-border);
+    border-left: 3px solid var(--ark-orange);
+    padding: 1.25rem 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .timeline-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ark-orange);
+    margin-bottom: 1rem;
+  }
+
+  .timeline-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    font-size: 14px;
+  }
+
+  .timeline-row:last-child { border-bottom: none; }
+
+  .timeline-date {
+    color: var(--ark-white);
+    font-weight: 600;
+    white-space: nowrap;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 15px;
+    letter-spacing: 0.04em;
+  }
+
+  .timeline-desc { color: var(--ark-muted); text-align: right; font-size: 13px; }
+
+  .timeline-row.critical .timeline-date { color: var(--ark-orange-bright); }
+  .timeline-row.critical .timeline-desc { color: #E07060; }
+
+  /* CALLOUT */
+  .callout {
+    background: rgba(192, 57, 43, 0.08);
+    border: 1px solid rgba(192, 57, 43, 0.35);
+    padding: 1.2rem 1.5rem;
+    margin: 2rem 0;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .callout-icon {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    color: var(--ark-red);
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .callout p {
+    margin: 0 !important;
+    font-size: 14.5px !important;
+    color: #C9A09A !important;
+  }
+
+  .callout strong { color: #E8C0BB !important; }
+
+  /* SIGNATURE BLOCK */
+  .signature {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .signature p {
+    font-size: 14px !important;
+    color: var(--ark-muted) !important;
+  }
+
+  .signature .sig-name {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 15px !important;
+    color: var(--ark-text) !important;
+    letter-spacing: 0.05em;
+  }
+
+  /* SIDEBAR */
+  .sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .sidebar-card {
+    background: var(--ark-surface2);
+    border: 1px solid rgba(255,255,255,0.07);
+    padding: 1.25rem;
+  }
+
+  .sidebar-card-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ark-muted);
+    margin-bottom: 0.9rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.45rem 0;
+    font-size: 13px;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+  }
+
+  .info-row:last-child { border-bottom: none; }
+  .info-label { color: var(--ark-muted); }
+  .info-value { color: var(--ark-white); font-weight: 600; font-size: 12.5px; text-align: right; }
+  .info-value.danger { color: #E07060; }
+
+  .tag-list { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    background: rgba(232, 118, 10, 0.1);
+    border: 1px solid rgba(232, 118, 10, 0.2);
+    color: var(--ark-muted);
+    font-size: 11.5px;
+    padding: 3px 8px;
+    letter-spacing: 0.04em;
+  }
+
+  .related-link {
+    display: block;
+    font-size: 13.5px;
+    color: var(--ark-muted);
+    text-decoration: none;
+    padding: 0.45rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+    transition: color 0.15s;
+  }
+
+  .related-link:hover { color: var(--ark-orange); }
+  .related-link:last-child { border-bottom: none; }
+  .related-link::before { content: '›  '; color: var(--ark-orange); }
+
+  /* DISCLAIMER */
+  .disclaimer-bar {
+    background: #1A1A0A;
+    border-top: 2px solid #5A5A00;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  .disclaimer-bar p {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #AAAA44;
+    max-width: 640px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .disclaimer-bar .gotcha {
+    font-size: 20px;
+    color: #CCCC55;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #0A0A0A;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding: 2rem;
+    text-align: center;
+    font-size: 12px;
+    color: var(--ark-muted);
+    font-family: 'Rajdhani', sans-serif;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-logo" href="#">ARK<span>:</span> Survival Ascended</a>
+  <ul class="nav-links">
+    <li><a href="#">News</a></li>
+    <li><a href="#">Community</a></li>
+    <li><a href="#">Store</a></li>
+    <li><a href="#">Support</a></li>
+  </ul>
+</nav>
+
+<div class="hero-banner">
+  <div class="hero-inner">
+    <div class="badge-urgent">Official Notice &mdash; Studio Wildcard</div>
+    <h1 class="hero-title">
+      Official Server<br>
+      <em>Shutdown Notice</em>
+    </h1>
+    <div class="hero-meta">
+      <span>Posted by <strong>Studio Wildcard Community Team</strong></span>
+      <span>June 3, 2026</span>
+      <span>Category: <strong>Server Operations</strong></span>
+    </div>
+  </div>
+</div>
+
+<div class="content-wrap">
+  <article class="article-body">
+
+    <h2>A Message From Studio Wildcard</h2>
+
+    <p>
+      After careful deliberation and a comprehensive internal review of our infrastructure roadmap,
+      we are writing today to inform our community of a significant operational change affecting
+      <strong>ARK: Survival Ascended</strong> official server networks globally.
+    </p>
+
+    <p>
+      Effective <strong>June 15, 2026 at 11:59 PM UTC</strong>, all Studio Wildcard-operated
+      official servers for ARK: Survival Ascended will be taken offline. This includes PvP, PvE,
+      Small Tribes, and Hardcore clusters across all regions.
+    </p>
+
+    <p>
+      This decision was not made lightly. The ARK community has been an extraordinary part of
+      our journey since Early Access, and we understand this news carries real weight for players
+      who have invested thousands of hours into their tribes and builds. We want to be as
+      transparent as possible about what is happening and why.
+    </p>
+
+    <h2>What Is Changing</h2>
+
+    <p>
+      Studio Wildcard will be consolidating its server operations as part of a broader
+      infrastructure partnership arrangement. Going forward, <strong>official game servers will
+      no longer be operated or maintained directly by Studio Wildcard</strong>. Unofficial and
+      player-hosted dedicated servers are not affected by this change and will continue to
+      function normally.
+    </p>
+
+    <div class="callout">
+      <div class="callout-icon">!</div>
+      <p>
+        <strong>Character and tribe data will not be transferable</strong> between official and
+        unofficial servers. We strongly encourage all players to back up their single-player saves
+        and explore unofficial hosting options before the shutdown window.
+      </p>
+    </div>
+
+    <h2>Timeline</h2>
+
+    <div class="timeline">
+      <div class="timeline-title">Shutdown Schedule &mdash; All Times UTC</div>
+
+      <div class="timeline-row">
+        <span class="timeline-date">June 3, 2026</span>
+        <span class="timeline-desc">This announcement published. No server changes.</span>
+      </div>
+      <div class="timeline-row">
+        <span class="timeline-date">June 10, 2026</span>
+        <span class="timeline-desc">In-game server browser will begin displaying shutdown warnings.</span>
+      </div>
+      <div class="timeline-row">
+        <span class="timeline-date">June 13, 2026</span>
+        <span class="timeline-desc">No new characters can be created on official servers.</span>
+      </div>
+      <div class="timeline-row critical">
+        <span class="timeline-date">June 15, 2026 — 11:59 PM UTC</span>
+        <span class="timeline-desc">All official servers permanently taken offline.</span>
+      </div>
+    </div>
+
+    <h2>Your Options Going Forward</h2>
+
+    <p>
+      Unofficial servers hosted by community members and third-party providers will remain fully
+      operational. Many high-quality unofficial clusters already exist with active populations,
+      including boosted rates and QoL mods that the official network did not support.
+    </p>
+
+    <p>
+      Players looking to continue their ARK experience are encouraged to visit the
+      <strong>community server browser</strong> and ARK&rsquo;s subreddit and Discord, where server
+      owners are already organizing migration events and offering tribe transfer assistance.
+    </p>
+
+    <p>
+      We recognize this is a disruptive change on short notice. We are committed to supporting the
+      transition in whatever way we are able over the coming weeks.
+    </p>
+
+    <h2>Thank You</h2>
+
+    <p>
+      To every tribe, every tamer, every survivor who has spent nights on the Island, on Aberration,
+      in Genesis &mdash; this game exists because of you. The community you built will outlast any server.
+    </p>
+
+    <div class="signature">
+      <p>With gratitude,</p>
+      <p class="sig-name">The Studio Wildcard Team</p>
+      <p style="margin-top: 0.25rem;">June 3, 2026</p>
+    </div>
+
+  </article>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-title">Notice Details</div>
+      <div class="info-row">
+        <span class="info-label">Announcement Date</span>
+        <span class="info-value">June 3, 2026</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Shutdown Date</span>
+        <span class="info-value danger">June 15, 2026</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Affected Servers</span>
+        <span class="info-value">All Official</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Unofficial Servers</span>
+        <span class="info-value">Not Affected</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Notice Period</span>
+        <span class="info-value danger">12 Days</span>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-title">Affected Clusters</div>
+      <div class="tag-list">
+        <span class="tag">PvP Official</span>
+        <span class="tag">PvE Official</span>
+        <span class="tag">Small Tribes</span>
+        <span class="tag">Hardcore</span>
+        <span class="tag">Legacy</span>
+        <span class="tag">All Regions</span>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-title">Related Announcements</div>
+      <a class="related-link" href="#">Community Server Directory</a>
+      <a class="related-link" href="#">Unofficial Hosting Guide</a>
+      <a class="related-link" href="#">Save Data FAQ</a>
+      <a class="related-link" href="#">Refund Policy Update</a>
+    </div>
+
+  </aside>
+</div>
+
+<div class="disclaimer-bar">
+  <p>
+    <span class="gotcha">&#128513; GOT YOU.</span>
+    THIS IS A 100% FAKE PAGE MADE AS A GUILD PRANK &mdash;
+    ARK SERVERS ARE NOT SHUTTING DOWN.
+    NO ANNOUNCEMENTS WERE HARMED IN THE MAKING OF THIS PAGE.
+    GO BACK TO NOT PLAYING WOW.
+  </p>
+</div>
+
+<footer>
+  &copy; Studio Wildcard &mdash; Not real. Not even a little bit.
+</footer>
+
+</body>
+</html>
